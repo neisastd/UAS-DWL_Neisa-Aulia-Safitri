@@ -135,40 +135,75 @@ body { background-color: #fcfcfc; color: #333; }
     transform: scale(1.1);
 }
 
-/* 2. Wadah Slider */
-.product-slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 30px; /* Jarak antar kartu */
-    padding: 10px 0 30px 0;
-    scrollbar-width: none; /* Hilangkan scrollbar Firefox */
+/* Container Utama Produk */
+.products .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box; /* Sangat penting agar padding tidak merusak lebar */
 }
 
+/* 2. Wadah Slider */
+.product-slider {
+    display: grid; /* Mengubah flex menjadi grid agar bisa 2 baris 3 kolom */
+    grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom otomatis */
+    gap: 25px;
+    padding: 20px 0;
+    overflow: visible; /* Mematikan fungsi scroll samping */
+}
 .product-slider::-webkit-scrollbar {
     display: none; /* Hilangkan scrollbar Chrome/Safari */
 }
 
 /* 3. Kartu Produk (SETTING 3 KOLOM) */
 .product-card {
-    /* Rumus: (100% / 3) - kompensasi gap agar pas 3 produk di layar */
-    flex: 0 0 calc(33.333% - 20px);
-    min-width: calc(33.333% - 20px);
-    
-    background: linear-gradient(to bottom, #fffdf5 0%, #f0f7ff 100%);
+    background: linear-gradient(to bottom, #fff9e6 0%, #ffffff 100%);
     border-radius: 20px;
-    padding: 40px 20px 0 20px;
+    padding: 30px 20px;
     text-align: center;
+    border: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #f0f0f0;
     transition: transform 0.3s ease;
+    width: 100%; /* Kartu mengikuti lebar kolom grid */
 }
 
+/* Tambahkan efek hover Kuning */
 .product-card:hover {
     transform: translateY(-10px);
+    border-color: #FFD700;
 }
+
+/* Ketika layar di bawah 768px (HP/Tablet) */
+@media (max-width: 768px) {
+    
+    /* 1. Ubah slider dari berderet samping menjadi berderet ke bawah */
+    .product-slider {
+        display: flex;
+        flex-direction: column; /* Ini kunci agar produk turun ke bawah */
+        align-items: center;    /* Agar produk rata tengah */
+        gap: 30px;              /* Memberi jarak antar produk yang turun */
+        overflow-x: hidden;     /* Matikan scroll sampingnya */
+    }
+
+    /* 2. Atur lebar kartu agar pas di layar HP */
+    .product-card {
+        flex: 0 0 auto;
+        width: 100%;            /* Kartu memenuhi lebar layar */
+        max-width: 320px;       /* Tapi dibatasi agar tidak terlalu raksasa */
+        min-width: unset;       /* Hapus paksaan lebar 280px yang tadi */
+        margin: 0 auto;
+    }
+
+    /* 3. Sembunyikan tombol navigasi panah di HP (karena sudah turun ke bawah) */
+    .slider-controls {
+        display: none;
+    }
+}
+
+
 
 /* 4. Bagian Gambar di Bawah */
 .product-image {
@@ -262,6 +297,64 @@ body { background-color: #fcfcfc; color: #333; }
     .grid-3, .details-grid, .testimonial-grid { grid-template-columns: 1fr; width: 100%; }
 }
 
+/* --- SECTION FEATURES (DI BAWAH DESKRIPSI) --- */
+.features-minimal {
+    padding: 60px 0;
+    background: transparent;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-item {
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 15px;
+    transition: all 0.4s ease; /* Transisi halus untuk hover */
+    background: rgba(255, 255, 255, 0.5); /* Putih transparan */
+    border: 1px solid transparent;
+}
+
+/* --- EFEK HOVER --- */
+.feature-item:hover {
+    background: #ffffff; /* Berubah jadi putih solid */
+    border: 1px solid #ffecb3; /* Garis tepi kuning tipis */
+    transform: translateY(-5px); /* Sedikit naik ke atas */
+    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.05); /* Bayangan oranye sangat tipis */
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.feature-item h4 {
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.7;
+    max-width: 250px;
+    margin: 0 auto;
+}
+/* Responsive: Jadi 1 kolom di HP */
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
 /* Styling Brand Info di Bawah Produk */
 .brand-info {
     background: #fdfdfd;
@@ -300,25 +393,42 @@ body { background-color: #fcfcfc; color: #333; }
 
 .newsletter-form {
     display: flex;
-    gap: 10px;
+    flex-direction: column; /* Membuat kolom input berderet ke bawah */
+    gap: 12px;
+    width: 100%;
+    max-width: 400px; /* Batas lebar form */
 }
 
 .newsletter-form input {
     padding: 12px 20px;
-    border-radius: 50px;
-    border: none;
-    width: 250px;
+    border-radius: 8px; /* Sudut sedikit kotak agar terlihat profesional */
+    border: 1px solid #ddd;
+    width: 100%;
+    font-size: 14px;
 }
 
 .newsletter-form button {
-    padding: 12px 30px;
+    padding: 14px;
     background: #e67e22;
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 5px;
+}
+
+/* Penyesuaian box newsletter agar muat form yang lebih panjang */
+.newsletter-box {
+    background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+    padding: 50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    gap: 30px;
 }
 
 .newsletter-form button:hover {
@@ -372,11 +482,19 @@ body { background-color: #fcfcfc; color: #333; }
     font-size: 0.9rem;
 }
 
+/* GANTI SEMUA KODE TADI DENGAN INI */
 .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: flex-start; /* Agar tulisan rata atas */
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Supaya kalau di layar kecil otomatis turun */
+}
+
+.footer-info, .footer-contact, .footer-links {
+    flex: 1; 
+    min-width: 250px;
 }
 
 .footer-info h4 {
@@ -389,15 +507,32 @@ body { background-color: #fcfcfc; color: #333; }
     color: #fff;
 }
 
+/* Styling Baru untuk Kolom Kontak */
+.footer-contact h4 {
+    color: #e67e22;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-contact p {
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Perbaikan Footer Links agar berderet ke bawah */
 .footer-links {
     display: flex;
-    gap: 20px;
+    flex-direction: column; /* Link bantuan jadi berbaris ke bawah */
+    gap: 12px;
 }
 
 .footer-links a {
     color: #bbb;
     text-decoration: none;
     transition: 0.3s;
+    font-size: 0.9rem;
 }
 
 .footer-links a:hover {
@@ -462,5 +597,116 @@ hr {
     .description-text {
         font-size: 0.9rem;
         padding: 0 15px;
+    }
+}
+
+/* --- RESPONSIVE FIX --- */
+
+/* 1. Untuk Layar Tablet & HP (Lebar di bawah 768px) */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .nav-links {
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Ukuran teks judul mengecil di HP */
+    }
+
+    /* Membuat Slider Produk bisa di-scroll manual dengan jari */
+    .product-slider {
+        gap: 15px;
+        padding-bottom: 20px;
+    }
+
+    .product-card {
+        min-width: 280px; /* Lebar kartu pas untuk layar HP */
+    }
+
+    /* Modal/Pop-up agar tidak kebesaran di HP */
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* 2. Mengatur Gambar agar tidak pecah/keluar jalur */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 3. Perbaikan Kontainer */
+.container {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* --- PERBAIKAN RESPONSIF NEISA --- */
+
+@media (max-width: 768px) {
+    /* Agar produk berjejer ke bawah seperti testimoni */
+    .product-slider {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        gap: 25px;
+        overflow: visible; /* Matikan scroll samping */
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 320px; /* Ukuran pas untuk HP */
+        flex: none;
+        min-width: unset;
+    }
+
+    /* Sembunyikan panah navigasi di HP karena sudah ke bawah */
+    .slider-controls {
+        display: none;
+    }
+
+    /* Agar Modal Keranjang tidak kepotong di HP */
+    .modal-content {
+        width: 90% !important;
+        margin: auto;
+        padding: 20px;
+    }
+
+    /* Navbar menyesuaikan */
+    .nav-links {
+        gap: 10px;
+        font-size: 13px;
+    }
+}
+
+/* Pastikan modal-overlay selalu di tengah */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+
+/* --- TAMBAHKAN INI DI BAGIAN PALING BAWAH CSS --- */
+/* Supaya di HP tidak gepeng, kita buat jadi 1 kolom saja */
+@media (max-width: 768px) {
+    .product-slider {
+        grid-template-columns: repeat(1, 1fr); /* Tumpuk produk ke bawah di HP */
+    }
+    
+    .slider-controls {
+        display: none; /* Sembunyikan panah navigasi karena sudah tidak pakai scroll */
     }
 }

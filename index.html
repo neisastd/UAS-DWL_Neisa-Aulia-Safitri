@@ -38,8 +38,7 @@
     <header class="hero">
         <div class="hero-overlay">
             <h1>Super Sound Wireless Pro</h1>
-            <p>Rasakan dentuman bass yang belum pernah Anda dengar sebelumnya. Diskon 30% hari ini.</p>
-            <a href="#" class="cta-buy">Beli Sekarang</a>
+            <p>Rasakan dentuman bass yang belum pernah Anda dengar sebelumnya. Diskon 30% hari ini.</p>         
         </div>
     </header>
 
@@ -118,8 +117,20 @@
                     <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Charger Pro Magnetic', '700.000')">Shop Now</a>
                 </div>
                 <div class="product-image">
-                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_PrimeTrip_VC2_Flex_Pro_Magnetic_Car_Charger_3_800x.jpg?v=1764236676" 
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_EnerFill_FE11_3-Port_USB-C_Fast_Charger_100W_1_800x.jpg?v=1744363182" 
                     alt="Produk 5">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Baseus PrimeTrip VD1 Pro</h3>
+                    <p>Dash Cam</p>
+                    <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Charger Pro Magnetic', '700.000')">Shop Now</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_PrimeTrip_VD1_Pro_Dash_Cam_Lithium_Battery_4K_1080p_1_800x.jpg?v=1758093801" 
+                    alt="Produk 6">
                 </div>
             </div>
 
@@ -152,16 +163,37 @@
     </div>
 </section>
 
+<section class="features-minimal">
+    <div class="container feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <h4>FREE SHIPPING</h4>
+            <p>3-8 business days for your package to be delivered and 7-days hassle-free returns.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎧</div>
+            <h4>SUPPORT CENTER</h4>
+            <p>Get dedicated customer support you deserve. Find the answers to multiple frequently asked questions.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">✉️</div>
+            <h4>EMAIL US</h4>
+            <p>If you have any concerns or questions, we will be glad to solve them. Contact us via email at shopify.us@baseus.com.</p>
+        </div>
+    </div>
+</section>
+
 <section class="newsletter">
     <div class="container newsletter-box">
         <div class="newsletter-content">
-            <h3>Dapatkan Promo Eksklusif!</h3>
-            <p>Daftarkan email Anda untuk menerima update gadget terbaru dan voucher diskon 50%.</p>
+            <h3>Buat Akun TECHSTORE</h3>
+            <p>Daftar sekarang untuk melacak pesanan dan klaim voucher diskon 50%.</p>
         </div>
-        <form class="newsletter-form">
-            <input type="email" id="subscriberEmail" placeholder="Masukkan email Anda..." required>
-           <button type="button" onclick="kirimLangganan()">Langganan</button>
-        </div>
+        <form class="newsletter-form" id="registrationForm">
+            <input type="text" id="regName" placeholder="Nama Lengkap" required>
+            <input type="email" id="regEmail" placeholder="Alamat Email" required>
+            <input type="password" id="regPass" placeholder="Password" required>
+            <button type="button" onclick="handleRegistration()">Daftar Sekarang</button>
         </form>
     </div>
 </section>
@@ -217,16 +249,25 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <h4>TECH<span>STORE</span></h4>
-                    <p>Toko gadget terpercaya dengan kualitas internasional.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#">Kebijakan Privasi</a>
-                    <a href="#">Syarat & Ketentuan</a>
-                    <a href="#">Bantuan</a>
-                </div>
-            </div>
+    <div class="footer-info">
+        <h4>TECH<span>STORE</span></h4>
+        <p>Toko gadget terpercaya dengan kualitas internasional.</p>
+    </div>
+
+    <div class="footer-contact">
+        <h4 style="color: #e67e22; font-size: 1.1rem; margin-bottom: 10px;">Hubungi Kami</h4>
+        <p style="color: #bbb; font-size: 0.9rem; margin-bottom: 5px;">📍 Jl. Teknologi No. 101, Jakarta</p>
+        <p style="color: #bbb; font-size: 0.9rem; margin-bottom: 5px;">📞 +62 812 3456 7890</p>
+        <p style="color: #bbb; font-size: 0.9rem;">✉️ support@techstore.id</p>
+    </div>
+
+    <div class="footer-links">
+        <h4 style="color: #e67e22; font-size: 1.1rem; margin-bottom: 10px;">Bantuan</h4>
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+        <a href="#">FAQ</a>
+    </div>
+</div>
             <hr>
             <p class="copyright">&copy; 2024 TechStore. Semua Hak Dilindungi. UAS Design Web.</p>
         </div>
@@ -249,12 +290,9 @@
     </div>
 </div>
 
-    <script>
-    // 1. VARIABEL GLOBAL (Untuk menyimpan data keranjang)
+   <script>
     let cartItems = []; 
-    let cartCount = 0;
 
-    // 2. FUNGSI NAVIGASI & MODAL AWAL
     function scrollSlider(distance) {
         const slider = document.getElementById('productSlider');
         slider.scrollBy({ left: distance, behavior: 'smooth' });
@@ -264,7 +302,6 @@
         document.getElementById('welcomeModal').style.display = 'none';
     }
 
-    // 3. FUNGSI PRODUK & POP-UP
     function showProductPopUp(name, price) {
         document.getElementById('popTitle').innerText = name;
         document.getElementById('popPrice').innerText = price;
@@ -275,15 +312,11 @@
         document.getElementById('productPopUp').style.display = 'none';
     }
 
-    // 4. FUNGSI KERANJANG (UPDATE DISINI)
     function addToCart() {
         const name = document.getElementById('popTitle').innerText;
         const price = document.getElementById('popPrice').innerText;
-        
-        // Simpan data ke array
         cartItems.push({ nama: name, harga: price });
         
-        // Update angka di navbar
         const cartElement = document.querySelector('.cart-icon');
         if (cartElement) {
             cartElement.innerHTML = `🛒 Keranjang (${cartItems.length})`;
@@ -294,37 +327,65 @@
         closeProductPopUp();
     }
 
-    // Fungsi membuka daftar belanja saat ikon keranjang diklik
+    // Fungsi Keranjang Baru: Menampilkan modal, bukan Alert
     function openCartModal() {
-        let daftar = "";
+        const listContainer = document.getElementById('cartItemsList');
+        const totalContainer = document.getElementById('cartTotalPrice');
+        const modal = document.getElementById('cartModal');
+        
         if (cartItems.length === 0) {
-            daftar = "Keranjang masih kosong.";
+            listContainer.innerHTML = '<p style="text-align: center;">Keranjang kosong.</p>';
+            totalContainer.innerText = "Rp 0";
         } else {
-            cartItems.forEach((item, index) => {
-                daftar += (index + 1) + ". " + item.nama + " (Rp " + item.harga + ")\n";
+            let html = '<ul style="list-style:none; padding:0;">';
+            let total = 0;
+            cartItems.forEach(item => {
+                html += `<li style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                            <span>${item.nama}</span>
+                            <b>Rp ${item.harga}</b>
+                         </li>`;
+                // Menghitung total sederhana
+                total += parseInt(item.harga.replace(/\./g, ''));
             });
+            html += '</ul>';
+            listContainer.innerHTML = html;
+            totalContainer.innerText = "Rp " + total.toLocaleString('id-ID');
         }
-        alert("Isi Keranjang Belanja Anda:\n\n" + daftar);
+        modal.style.display = 'flex';
     }
 
-    // 5. FUNGSI NEWSLETTER / LANGGANAN
-    function kirimLangganan() {
-        const emailInput = document.getElementById('subscriberEmail');
-        const emailValue = emailInput.value;
-
-        if (emailValue === "") {
-            alert("Silakan masukkan email Anda!");
-            return;
-        }
-
-        document.getElementById('displayEmail').innerText = emailValue;
-        document.getElementById('subscribeModal').style.display = 'flex';
-        emailInput.value = ""; // Kosongkan input
+    function closeCartModal() {
+        document.getElementById('cartModal').style.display = 'none';
     }
 
-    function closeSubscribeModal() {
-        document.getElementById('subscribeModal').style.display = 'none';
+    function checkoutAlert() {
+        alert("Terima kasih! Pesanan Anda akan segera kami proses.");
+        cartItems = [];
+        document.querySelector('.cart-icon').innerHTML = `🛒 Keranjang (0)`;
+        closeCartModal();
     }
+
+    function handleRegistration() {
+    const name = document.getElementById('regName').value;
+    const email = document.getElementById('regEmail').value;
+    const pass = document.getElementById('regPass').value;
+
+    if (name === "" || email === "" || pass === "") {
+        alert("Mohon lengkapi semua data registrasi!");
+        return;
+    }
+
+    // Menampilkan pesan sukses menggunakan modal yang sudah kamu punya
+    document.getElementById('displayEmail').innerText = email;
+    // Kita ubah sedikit teks di modal suksesnya
+    document.querySelector('#subscribeModal h3').innerText = "Registrasi Berhasil!";
+    document.querySelector('#subscribeModal p').innerHTML = `Halo <strong>${name}</strong>, akun dengan email ${email} telah aktif.`;
+    
+    document.getElementById('subscribeModal').style.display = 'flex';
+
+    // Kosongkan form setelah daftar
+    document.getElementById('registrationForm').reset();
+}
 </script>
 
 </body>
