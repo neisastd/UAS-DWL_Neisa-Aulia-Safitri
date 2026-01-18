@@ -1,0 +1,466 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body { background-color: #fcfcfc; color: #333; }
+.container { width: 85%; margin: 0 auto; padding: 50px 0; }
+
+/* NAVBAR */
+.navbar {
+    height: 75px; background: #fff; display: flex; align-items: center;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;
+}
+.nav-container { width: 85%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 900; font-size: 22px; color:#e67e22; } /* Warna Oranye Shopee/Amazon */
+.logo span { color: #2c3e50; }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { text-decoration: none; color: #555; font-weight: 500; font-size: 14px; }
+.cart-icon { color: #e67e22 !important; font-weight: bold; }
+
+
+/* Tampilan Paragraf di Bawah Background */
+.hero-description {
+    background-color: #ffffff; /* Latar belakang putih bersih */
+    text-align: center;
+    padding: 40px 0 10px 0; /* Memberi jarak yang pas */
+}
+
+.description-text {
+    max-width: 800px; /* Agar teks tidak terlalu lebar ke samping */
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    font-weight: 300; /* Tipis agar terlihat modern/clean */
+    letter-spacing: 0.5px;
+}
+
+.description-text strong {
+    color: #e67e22; /* Highlight oranye pada nama brand */
+    font-weight: 700;
+}
+/* Container untuk Logo dan Teks */
+.logo-wrapper {
+    display: flex;
+    align-items: center; /* Menyejajarkan logo dan teks di tengah secara vertikal */
+    gap: 12px; /* Jarak antara gambar logo dan teks TECHSTORE */
+}
+
+.brand-logo {
+    width: 40px; /* Sesuaikan ukuran logo */
+    height: 40px;
+    object-fit: contain; /* Agar gambar tidak gepeng */
+    border-radius: 4px; /* Opsional: jika ingin sudut logo sedikit tumpul */
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 22px;
+    color: #e67e22;
+    line-height: 1; /* Menghilangkan ruang kosong ekstra di bawah teks */
+}
+
+.logo span {
+    color: #2c3e50;
+}
+
+/* HERO */
+.hero {
+    height: 480px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://www.baseus.com/cdn/shop/files/DTC-US02_NEW_YEAR_BANNER_notext.jpg?v=1766976944&width=2000');
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; color: #fff; text-align: center;
+}
+.badge { background: #e67e22; padding: 5px 12px; border-radius: 4px; font-size: 12px; text-transform: uppercase; }
+.hero h1 { font-size: 48px; margin: 15px 0; }
+.cta-buy {
+    display: inline-block; padding: 12px 35px; background: #e67e22;
+    color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px;
+}
+
+/* BENEFITS (3 Kolom) */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.benefit-card { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid #eee; text-align: center; }
+.benefit-card .icon { font-size: 35px; margin-bottom: 10px; }
+
+/* DETAILS (2x2) */
+.section-title { text-align: center; margin-bottom: 40px; font-size: 28px; }
+.details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 40px; }
+.detail-item h4 { color: #e67e22; margin-bottom: 8px; }
+
+.promo-text { text-align: center; border-top: 1px dashed #ccc; padding-top: 30px; font-size: 1.1rem; color: #777; }
+
+/* TESTIMONIALS (2x2 Area Gelap) */
+.footer-dark { background: #1a1a1a; color: #fff; }
+.testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 80%; }
+.testi { display: flex; align-items: flex-start; gap: 20px; background: #222; padding: 20px; border-radius: 10px; }
+.user-avatar { width: 60px; height: 60px; border-radius: 50%; background: #444; flex-shrink: 0; }
+.testi-content h5 { color: #e67e22; margin-bottom: 5px; }
+.testi-content p { font-size: 0.9rem; line-height: 1.4; color: #bbb; }
+
+/* --- SECTION PRODUK SLIDER (GANTI SEMUA KODE PRODUK DENGAN INI) --- */
+
+/* 1. Tombol Panah Navigasi */
+.slider-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.control-btn {
+    background:#e67e22;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.control-btn:hover {
+    background: #2c3e50;
+    transform: scale(1.1);
+}
+
+/* 2. Wadah Slider */
+.product-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 30px; /* Jarak antar kartu */
+    padding: 10px 0 30px 0;
+    scrollbar-width: none; /* Hilangkan scrollbar Firefox */
+}
+
+.product-slider::-webkit-scrollbar {
+    display: none; /* Hilangkan scrollbar Chrome/Safari */
+}
+
+/* 3. Kartu Produk (SETTING 3 KOLOM) */
+.product-card {
+    /* Rumus: (100% / 3) - kompensasi gap agar pas 3 produk di layar */
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: calc(33.333% - 20px);
+    
+    background: linear-gradient(to bottom, #fffdf5 0%, #f0f7ff 100%);
+    border-radius: 20px;
+    padding: 40px 20px 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+/* 4. Bagian Gambar di Bawah */
+.product-image {
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.product-image img {
+    width: 100%;
+    height: 350px; /* Ukuran gambar produk besar */
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+/* Tombol Shop Now Transparan Permanen dengan Border Gradasi */
+.btn-shop {
+    display: inline-block;
+    background: transparent; /* Transparan dari awal */
+    color: #333; /* Warna teks (ubah ke #fff jika background kartu gelap) */
+    padding: 12px 40px;
+    border-radius: 50px; /* Bentuk kapsul sesuai gambar */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    
+    /* Teknik Border Gradasi dengan Tengah Transparan */
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), 
+                      linear-gradient(to right, #e67e22, #e1e1e1); /* Soft Pink to Peach */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+/* Saat di-hover, tombol bisa berubah sedikit lebih tegas */
+.btn-shop:hover {
+    transform: scale(1.05);
+    background: rgba(230, 126, 34, 0.1); /* Memberi sedikit rona saat disentuh */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Styling Pop-Up Produk */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none; /* Awalnya tersembunyi */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive: Jika layar HP, ubah jadi 1 kolom saja */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Layar tablet jadi 2 kolom */
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Layar HP jadi 1 kolom */
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-3, .details-grid, .testimonial-grid { grid-template-columns: 1fr; width: 100%; }
+}
+
+/* Styling Brand Info di Bawah Produk */
+.brand-info {
+    background: #fdfdfd;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.brand-text {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Styling Newsletter (Sering ada di desain web modern) */
+.newsletter {
+    padding: 50px 0;
+}
+
+.newsletter-box {
+    background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.newsletter-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #e67e22;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: none;
+    width: 250px;
+}
+
+.newsletter-form button {
+    padding: 12px 30px;
+    background: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter-form button:hover {
+    background: #d35400;
+}
+
+/* Styling Modal Selamat Datang */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 { color: #e67e22; margin-bottom: 15px; }
+.modal-content p { color: #666; margin-bottom: 25px; line-height: 1.6; }
+
+
+
+/* Responsif Newsletter untuk HP */
+@media (max-width: 768px) {
+    .newsletter-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        width: 100%;
+    }
+    .newsletter-form input {
+        width: 100%;
+    }
+}
+
+/* FOOTER BOTTOM STYLING */
+.footer-bottom {
+    background-color: #111; /* Lebih gelap dari area testimoni */
+    color: #fff;
+    padding: 40px 0 20px 0;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-info h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #e67e22;
+}
+
+.footer-info h4 span {
+    color: #fff;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #e67e22;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    color: #777;
+    font-size: 0.8rem;
+}
+
+/* Responsif Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
+
+/* --- RESPONSIVE DESIGN ADJUSTMENTS --- */
+
+/* Untuk Layar Tablet & HP (Max 768px) */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 85%; /* Kotak pop-up mengecil menyesuaikan layar HP */
+        padding: 25px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content p {
+        font-size: 1rem;
+    }
+
+    /* Mengatur tombol di dalam pop-up agar bertumpuk jika layar terlalu sempit */
+    .modal-content div {
+        flex-direction: column; 
+        gap: 15px !important;
+    }
+
+    .modal-content .btn-shop {
+        width: 100%; /* Tombol jadi lebar penuh di HP agar mudah diklik jari */
+    }
+}
+
+/* Untuk Layar HP Kecil (Max 480px) */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .description-text {
+        font-size: 0.9rem;
+        padding: 0 15px;
+    }
+}

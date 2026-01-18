@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAS - Neisa Aulia</title>
+    <link rel="stylesheet" href="UAS.css">
+</head>
+<body>
+
+    <div id="welcomeModal" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Halo, Gadget Lovers! 👋</h3>
+        <p>Nikmati pengalaman belanja gadget premium dengan diskon hingga 30% hari ini.</p>
+        <button onclick="closeModal()" class="btn-shop" style="margin-bottom:0; padding:10px 30px;">Mulai Belanja</button>
+    </div>
+</div>
+
+
+
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-wrapper">
+            <img src="https://www.baseus.com/cdn/shop/files/LOGO1_110x.png?v=1708484845" alt="Logo Merk" class="brand-logo">
+            <div class="logo">TECH<span>STORE</span></div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Katergori</a></li>
+            <li><a href="javascript:void(0)" class="cart-icon" onclick="openCartModal()">🛒 Keranjang (0)</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    <header class="hero">
+        <div class="hero-overlay">
+            <h1>Super Sound Wireless Pro</h1>
+            <p>Rasakan dentuman bass yang belum pernah Anda dengar sebelumnya. Diskon 30% hari ini.</p>
+            <a href="#" class="cta-buy">Beli Sekarang</a>
+        </div>
+    </header>
+
+
+    <section class="hero-description">
+        <div class="container">
+            <p class="description-text">
+                Selamat datang di <strong>TECHSTORE</strong>. Kami menghadirkan koleksi gadget premium dengan teknologi mutakhir untuk menunjang gaya hidup digital Anda. Temukan penawaran eksklusif setiap harinya.
+            </p>
+        </div>
+    </section>
+
+    
+
+    <section class="products">
+    <div class="container">
+        <div class="slider-controls">
+            <button class="control-btn" onclick="scrollSlider(-330)">❮</button>
+            <button class="control-btn" onclick="scrollSlider(330)">❯</button>
+        </div>
+
+        <div class="product-slider" id="productSlider">
+            
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Baseus Bowie 30 Max Noise Cancelling </h3>
+                    <p>Headphone</p>
+                    <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Headphone', '350.000')">Shop Now</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_Bowie_30_Max_Noise_Cancelling_Headphone__1_800x.jpg?v=1726802219" 
+                    alt="Produk 1">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Baseus Inspire XC1 Open-Ear </h3>
+                    <p>Earbuds</p>
+                    <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Earbuds', '400.000')">Shop Now</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_Inspire_XC1_Open-Ear_True_Wireless_Earbuds_Black_9_800x.jpg?v=1756822935"
+                     alt="Produk 2">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Baseus PicoGo Ultra-Slim Magnetic </h3>
+                    <p>Power Bank 5000mAh</p>
+                    <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Power Bank 5000mAH', '650.000')">Shop Now</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_PicoGo_Ultra-Slim_Magnetic_Power_Bank_5000mAh_Black_8_625b96f2-6c4c-44fc-af17-8cba049220ed_800x.jpg?v=1753856622" 
+                    alt="Produk 3">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Baseus PicoGo GaN USB-C</h3>
+                    <p>Charger 45W </p>
+                    <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Charger 45W', '500.000')">Shop Now</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_PicoGo_GaN_USB-C_Charger_45W_White__1_800x.jpg?v=1725892335" 
+                    alt="Produk 4">
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Baseus PrimeTrip VC2 Flex Pro Magnetic Car</h3>
+                    <p>Charger</p>
+                    <a href="javascript:void(0)" class="btn-shop" onclick="showProductPopUp('Charger Pro Magnetic', '700.000')">Shop Now</a>
+                </div>
+                <div class="product-image">
+                    <img src="https://www.baseus.com/cdn/shop/files/Baseus_PrimeTrip_VC2_Flex_Pro_Magnetic_Car_Charger_3_800x.jpg?v=1764236676" 
+                    alt="Produk 5">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="productPopUp" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <h3 id="popTitle" style="color: #2c3e50;">Nama Produk</h3>
+        <p style="font-size: 1.8rem; color: #e67e22; font-weight: bold; margin: 15px 0;">
+            Rp <span id="popPrice">0</span>
+        </p>
+        <p style="color: #666; margin-bottom: 20px;">Produk premium ini siap dikirim ke alamat Anda hari ini.</p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button onclick="addToCart()" class="btn-shop" style="background: #e67e22; color: white; border: none; padding: 10px 25px;">Tambah ke Keranjang</button>
+            <button onclick="closeProductPopUp()" class="btn-shop" style="background: #333; color: white; border: none; padding: 10px 25px;">Batal</button>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+
+<section class="brand-info">
+    <div class="container">
+        <h2 class="section-title">Why Choose TECHSTORE?</h2>
+        <p class="brand-text">
+            Setiap produk yang kami hadirkan telah melalui proses kurasi ketat untuk memastikan standar kualitas tertinggi. 
+            Kami percaya bahwa teknologi seharusnya mempermudah hidup, bukan mempersulitnya. Itulah mengapa TECHSTORE 
+            hanya fokus pada gadget dengan durabilitas tinggi dan desain yang futuristik.
+        </p>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="container newsletter-box">
+        <div class="newsletter-content">
+            <h3>Dapatkan Promo Eksklusif!</h3>
+            <p>Daftarkan email Anda untuk menerima update gadget terbaru dan voucher diskon 50%.</p>
+        </div>
+        <form class="newsletter-form">
+            <input type="email" id="subscriberEmail" placeholder="Masukkan email Anda..." required>
+           <button type="button" onclick="kirimLangganan()">Langganan</button>
+        </div>
+        </form>
+    </div>
+</section>
+
+<div id="subscribeModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div style="font-size: 50px; margin-bottom: 10px;">📩</div>
+        <h3>Terima Kasih!</h3>
+        <p>Email <strong id="displayEmail"></strong> berhasil didaftarkan. Cek inbox Anda untuk voucher diskon 50%!</p>
+        <button onclick="closeSubscribeModal()" class="btn-shop" style="background: #00D2FF; border: none; margin-top: 20px;">Siap, Terima Kasih!</button>
+    </div>
+</div>
+
+
+
+
+    <footer class="footer-dark">
+    <div class="container testimonial-grid">
+        <div class="testi">
+            <img src="https://i.mydramalist.com/43e46c.jpg" alt="dohkyung" class="user-avatar">
+            <div class="testi-content">
+                <h5>D.o Chagiya</h5>
+                <p>"Barangnya original, pengemasan sangat tebal dan aman. Rekomendasi banget!"</p>
+            </div>
+        </div>
+        <div class="testi">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7_KjhfFXJbiJ1a0JpxFNtTZZLR34y_Ev0A&s"
+             alt="Park Seo Jun" class="user-avatar">
+            <div class="testi-content">
+                <h5>Seo Jun Oppa</h5>
+                <p>"Adminnya sangat responsif pas ditanya soal spek laptop. Barangnya sesuai pesanan."</p>
+            </div>
+        </div>
+        <div class="testi">
+            <img src="https://i.pinimg.com/736x/b7/53/95/b753957f6efd6d16b2ffcddae06c0dc9.jpg" alt="jeanne" class="user-avatar">
+            <div class="testi-content">
+                <h5>Jeanne Baby</h5>
+                <p>"Harga paling kompetitif dibanding toko sebelah. Cicilannya juga gampang."</p>
+            </div>
+        </div>
+        <div class="testi">
+            <img src="https://i.pinimg.com/736x/12/db/82/12db82b385fe9eaedd0f3c4c28686366.jpg" alt="Dewi" class="user-avatar">
+            <div class="testi-content">
+                <h5>Minatozaki</h5>
+                <p>"Suka banget sama pelayanannya. Barang sampai cuma dalam 1 hari di Bandung."</p>
+            </div>
+        </div>
+    </div>
+
+
+</footer>
+    </footer>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>TECH<span>STORE</span></h4>
+                    <p>Toko gadget terpercaya dengan kualitas internasional.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                    <a href="#">Bantuan</a>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; 2024 TechStore. Semua Hak Dilindungi. UAS Design Web.</p>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="max-width: 500px;">
+        <h3 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">🛒 Keranjang Belanja</h3>
+        <div id="cartItemsList" style="text-align: left; margin: 20px 0; max-height: 300px; overflow-y: auto;">
+            <p style="color: #666; text-align: center;">Keranjang Anda masih kosong.</p>
+        </div>
+        <div style="border-top: 2px solid #eee; padding-top: 15px; font-weight: bold; display: flex; justify-content: space-between;">
+            <span>Total:</span>
+            <span id="cartTotalPrice" style="color: #e67e22;">Rp 0</span>
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 25px;">
+            <button onclick="checkoutAlert()" class="btn-shop" style="background: #e67e22; border: none;">Checkout</button>
+            <button onclick="closeCartModal()" class="btn-shop" style="background: #333; border: none;">Kembali</button>
+        </div>
+    </div>
+</div>
+
+    <script>
+    // 1. VARIABEL GLOBAL (Untuk menyimpan data keranjang)
+    let cartItems = []; 
+    let cartCount = 0;
+
+    // 2. FUNGSI NAVIGASI & MODAL AWAL
+    function scrollSlider(distance) {
+        const slider = document.getElementById('productSlider');
+        slider.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+
+    function closeModal() {
+        document.getElementById('welcomeModal').style.display = 'none';
+    }
+
+    // 3. FUNGSI PRODUK & POP-UP
+    function showProductPopUp(name, price) {
+        document.getElementById('popTitle').innerText = name;
+        document.getElementById('popPrice').innerText = price;
+        document.getElementById('productPopUp').style.display = 'flex';
+    }
+
+    function closeProductPopUp() {
+        document.getElementById('productPopUp').style.display = 'none';
+    }
+
+    // 4. FUNGSI KERANJANG (UPDATE DISINI)
+    function addToCart() {
+        const name = document.getElementById('popTitle').innerText;
+        const price = document.getElementById('popPrice').innerText;
+        
+        // Simpan data ke array
+        cartItems.push({ nama: name, harga: price });
+        
+        // Update angka di navbar
+        const cartElement = document.querySelector('.cart-icon');
+        if (cartElement) {
+            cartElement.innerHTML = `🛒 Keranjang (${cartItems.length})`;
+            cartElement.style.color = "#e67e22"; 
+        }
+        
+        alert("Berhasil! " + name + " ditambahkan ke keranjang.");
+        closeProductPopUp();
+    }
+
+    // Fungsi membuka daftar belanja saat ikon keranjang diklik
+    function openCartModal() {
+        let daftar = "";
+        if (cartItems.length === 0) {
+            daftar = "Keranjang masih kosong.";
+        } else {
+            cartItems.forEach((item, index) => {
+                daftar += (index + 1) + ". " + item.nama + " (Rp " + item.harga + ")\n";
+            });
+        }
+        alert("Isi Keranjang Belanja Anda:\n\n" + daftar);
+    }
+
+    // 5. FUNGSI NEWSLETTER / LANGGANAN
+    function kirimLangganan() {
+        const emailInput = document.getElementById('subscriberEmail');
+        const emailValue = emailInput.value;
+
+        if (emailValue === "") {
+            alert("Silakan masukkan email Anda!");
+            return;
+        }
+
+        document.getElementById('displayEmail').innerText = emailValue;
+        document.getElementById('subscribeModal').style.display = 'flex';
+        emailInput.value = ""; // Kosongkan input
+    }
+
+    function closeSubscribeModal() {
+        document.getElementById('subscribeModal').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
